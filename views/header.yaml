@@ -62,7 +62,8 @@ cards:
         }
 
   - type: custom:state-switch
-    entity: binary_sensor.praca
+    entity: template
+    template: "{% if ('07:30' <= states.sensor.time.state <= '18:00') and (is_state('binary_sensor.workday_sensor', 'on')) %} on {% else %} off {% endif %}"
     states:
       "on":
         type: custom:bubble-card
