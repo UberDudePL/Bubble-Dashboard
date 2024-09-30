@@ -1,0 +1,212 @@
+decluttering_templates:
+  media:
+    card:
+      type: custom:paper-buttons-row
+      buttons:
+        - icon: mdi:[[icon1]]
+          layout: icon
+          tap_action:
+            action: call-service
+            service: automation.trigger
+            service_data:
+              entity_id: "[[entity1]]"
+          style:
+            icon:
+              "--mdc-icon-size": 34px
+        - icon: mdi:music-box-outline
+          layout: icon
+          tap_action:
+            action: call-service
+            service: media_player.play_media
+            service_data:
+              media_content_id: FV:2/1
+              media_content_type: favorite_item_id
+              entity_id: "[[entity2]]"
+          style:
+            icon:
+              "--mdc-icon-size": 34px
+        - icon: mdi:volume-plus
+          layout: icon
+          tap_action:
+            action: call-service
+            service: media_player.volume_up
+            service_data:
+              entity_id: "[[entity2]]"
+          style:
+            icon:
+              "--mdc-icon-size": 34px
+        - icon: mdi:volume-minus
+          layout: icon
+          tap_action:
+            action: call-service
+            service: media_player.volume_down
+            service_data:
+              entity_id: "[[entity2]]"
+          style:
+            icon:
+              "--mdc-icon-size": 34px
+        - icon: mdi:[[icon2]]
+          layout: icon
+          tap_action:
+            action: call-service
+            service: "[[service]]"
+          style:
+            icon:
+              "--mdc-icon-size": 34px
+title: "UberDash"
+theme: Bubble
+views:
+  - type: custom:grid-layout
+    title: "Home"
+    icon: "mdi:home"
+    path: "0"
+    cards:
+      - type: custom:layout-card
+        layout_type: "custom:grid-layout"
+        layout:
+          grid-template-columns: 100%
+          grid-template-rows: "min-content"
+          grid-template-areas: |
+            "header"
+            "rooms"
+            "infos"
+            "bottom"
+            "footer"
+            "sticky"
+        cards:
+          - !include "views/popup.yaml"
+          - !include "views/header.yaml"
+          - !include "views/rooms.yaml"
+          - !include "views/info.yaml"
+          - type: custom:bubble-card
+            card_type: button
+            card_layout: large
+            button_type: name
+            show_icon: false
+            show_name: false
+            sub_button:
+              - name: Drzwi
+                entity: lock.drzwi
+                show_background: false
+                tap_action:
+                  action: toggle
+              - name: Shutters
+                entity: switch.gniazdkobiurkokrzys
+                icon: mdi:window-shutter
+                show_background: false
+                tap_action:
+                  action: navigate
+                  navigation_path: "#Shutters"
+              - name: AirCon
+                icon: mdi:tailwind
+                show_background: false
+                tap_action:
+                  action: navigate
+                  navigation_path: "#Aircon"
+              - name: Security
+                icon: mdi:video
+                show_background: false
+                tap_action:
+                  action: navigate
+                  navigation_path: "#Camera"
+              - name: Wylacza
+                icon: mdi:power-off
+                show_background: false
+                tap_action:
+                  action: call-service
+                  navigation_path: script.off
+            styles: |
+              ${subButtonIcon[0].setAttribute("icon", hass.states['lock.drzwi'].state === 'locked' ? 'mdi:lock' : 'mdi:lock-open')}
+              .card-content {
+                width: 100%;
+                margin: 0 !important;
+              }
+              .bubble-button-card-container {
+                background: var(--ha-card-background);
+              }
+              .bubble-sub-button {
+                height: 46px !important;
+                width: 46px !important;
+              }
+              .bubble-sub-button-container {
+                width: 100%;
+                align: center;
+                justify-content: center !important;
+              }
+              .bubble-sub-button-icon {
+                --mdc-icon-size: inherit !important;
+              }
+              .bubble-name-container {
+                margin-right: 0px !important;
+              }
+              .bubble-sub-button-1 > ha-icon {
+                  color: ${hass.states['lock.drzwi'].state === 'locked' ? '' : 'var(--accent-color)'} !important;
+                }
+              }
+              #type: custom:state-switch
+              #entity: template
+              #template: "{% if ('07:30' <= states.sensor.time.state <= '21:30') %} day {% else %} night {% endif %}"
+              #states:
+                #day:
+                #night:
+                  #- name: Sen
+                    #icon: mdi:sleep
+                    #show_background: false
+                    #tap_action:
+                      #action: call-service
+                      #service: automation.trigger
+                      #target:
+                        #entity_id: automation.rolety_sen
+            card_mod:
+              style: |
+                :host {
+                  position: sticky !important;
+                  bottom: 26px;
+                  margin-bottom: 10px !important;
+                  animation: 1.2s position ease-in-out;
+                }
+                @keyframes position {
+                  0% { bottom: -80px; }
+                  20% { bottom: -80px; }
+                  70% { bottom: 26px; }
+                  90% { bottom: 24px; }
+                  100% { bottom: 26px; }
+                }
+                @media (prefers-color-scheme: dark) {
+                  :host:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: -26px;
+                    left: -8px;
+                    padding-right: 16px;
+                    height: 130px;
+                    width: 100%; 
+                    background: linear-gradient(180deg, rgba(57, 54, 70, 0) 0%, rgba(57, 54, 70, 0.85) 100%);
+                    pointer-events: none;
+                    animation: 1.2s opacity ease-in-out;
+                  }
+                }
+                @media (prefers-color-scheme: light) {
+                  :host:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: -26px;
+                    left: -8px;
+                    padding-right: 16px;
+                    height: 130px;
+                    width: 100%; 
+                    background: linear-gradient(180deg, rgba(239, 241, 245, 0) 0%, rgba(239, 241, 245, 0.85) 100%);
+                    pointer-events: none;
+                    animation: 1.2s opacity ease-in-out;
+                  }
+                }
+                @keyframes opacity {
+                  0% { opacity: 0; }
+                  20% { opacity: 0; }
+                  100% { opacity: 1; }
+                }
+            view_layout:
+              grid-area: "sticky"
+
