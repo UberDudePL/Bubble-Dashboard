@@ -2,6 +2,10 @@
 This dashboard is designed for **Home Assistant** using [**Bubble Cards**](https://github.com/Clooos/Bubble-Card) to provide an intuitive and visually appealing interface. It is fully **adaptive** to different screen resolutions, ensuring a consistent user experience across devices. The setup is customizable, making it easy to tailor the layout and features to your smart home needs.
 <br>
 
+## Status: Work in Progress 🚧
+
+This dashboard is still a **Work in Progress**. I will be actively updating and improving it, so expect frequent changes and enhancements. Feel free to check back often for the latest updates.
+
 ## Table of contents
 
 **[`Installation`](#installation)**  **[`Configuration`](#configuration)**
