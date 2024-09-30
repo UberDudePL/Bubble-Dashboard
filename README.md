@@ -6,6 +6,9 @@ This dashboard is designed for **Home Assistant** using [**Bubble Cards**](https
 
 This dashboard is still a **Work in Progress**. I will be actively updating and improving it, so expect frequent changes and enhancements. Feel free to check back often for the latest updates.
 
+If you have any suggestions, ideas, or improvements, I’d love to hear them! Feel free to open an issue or contact me directly. Your feedback will help shape the final product.
+
+
 ## Table of contents
 
 **[`Installation`](#installation)**  **[`Configuration`](#configuration)**
@@ -84,3 +87,44 @@ The installation process is straightforward. Follow these steps to set up the da
 
 ## Configuration
 
+To finalize the setup of the dashboard, there are a few steps where you need to create either a sensor, binary sensor, or other entities. Please follow the steps below:
+
+### 1. Create Sensors
+
+In your `configuration.yaml`, you’ll need to define some custom sensors. Add the following example configuration:
+
+```yaml
+sensor:
+  - platform: template
+    sensors:
+      example_sensor:
+        friendly_name: "Example Sensor"
+        value_template: "{{ states('sensor.some_existing_sensor') }}"
+```
+
+This will create a new sensor based on an existing sensor or value in your system.
+
+### 2. Create Binary Sensors
+
+Similarly, for binary sensors, add the following configuration:
+
+```yaml
+binary_sensor:
+  - platform: template
+    sensors:
+      example_binary_sensor:
+        friendly_name: "Example Binary Sensor"
+        value_template: "{{ is_state('sensor.some_existing_sensor', 'on') }}"
+        device_class: motion
+```
+
+This binary sensor will monitor a specific sensor’s state and can be customized based on your setup.
+
+### 3. Reload Configuration
+
+After adding the sensors and binary sensors, you’ll need to reload the configuration for the changes to take effect:
+- Navigate to **Configuration > Server Controls**.
+- Click on **Check Configuration** to ensure there are no errors.
+- Click **Reload Template Entities** or restart Home Assistant if necessary.
+
+Following these steps will finalize the configuration and ensure all required sensors are in place for your dashboard to function correctly.
