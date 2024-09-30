@@ -1,0 +1,260 @@
+---
+type: custom:layout-card
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr 1fr"
+  mediaquery:
+    # Mobile
+    "(max-width: 600px)":
+      grid-template-columns: "1fr"
+    # Tablet
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr 1fr"
+view_layout:
+  grid-area: "infos"
+cards:
+  - type: custom:bubble-card
+    card_type: media-player
+    entity: media_player.salon
+    name: Salon
+    icon: ''
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    scrolling_effect: true
+    hide:
+      power_button: true
+
+  - type: custom:bubble-card
+    card_type: media-player
+    entity: media_player.lampa
+    name: Lampa
+    icon: ''
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    scrolling_effect: true
+    hide:
+      power_button: true
+
+  - type: custom:state-switch
+    entity: sensor.pralka
+    states:
+      "on":
+        type: custom:bubble-card
+        card_type: button
+        button_type: slider
+        entity: number.pralka
+        name: Pralka
+        icon: mdi:washing-machine
+        sub_button:
+        - entity: number.pralka
+          show_state: true
+          name: ''
+          icon: mdi:percent
+
+  - type: custom:state-switch
+    entity: sensor.suszarka
+    states:
+      "on":
+        type: custom:bubble-card
+        card_type: button
+        button_type: slider
+        entity: number.suszarka
+        name: Suszarka
+        icon: mdi:tumble-dryer
+        sub_button:
+        - entity: number.suszarka
+          show_state: true
+          name: ''
+          icon: mdi:percent
+
+  - type: custom:state-switch
+    entity: "{% if is_state('person.krzysztof', 'home')%}  {% else %} show {% endif %}"
+    states:
+      show:
+        type: custom:state-switch
+        entity: user
+        states:
+          Krzysztof:
+            type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: person.krzysztof
+            icon: mdi:alpha-k-circle
+            sub_button:
+              - entity: sensor.iphone_krzysztof_geocoded_location
+                show_state: true
+                show_attribute: false
+                show_last_changed: false
+                show_icon: false
+                show_background: false
+            styles: |
+              .bubble-sub-button-name-container {
+                opacity: 0.8;
+                font-size: 0.9em;
+                line-height: 1em;
+              }
+              .bubble-icon {
+                color: #04a5e5 !important;
+              }
+
+
+
+  - type: custom:state-switch
+    entity: "{% if is_state('person.gosia', 'home')%}  {% else %} show {% endif %}"
+    states:
+      show:
+        type: custom:state-switch
+        entity: user
+        states:
+          Krzysztof:
+            type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: person.gosia
+            icon: mdi:alpha-g-circle
+            sub_button:
+              - entity: sensor.iphone_malgorzata_geocoded_location
+                show_state: true
+                show_attribute: false
+                show_last_changed: false
+                show_icon: false
+                show_background: false
+            styles: |
+              .bubble-sub-button-name-container {
+                opacity: 0.8;
+                font-size: 0.9em;
+                line-height: 1em;
+              }
+              .bubble-icon {
+                color: ${hass.states['person.gosia'].state === 'praca' ? 'var(--accent-color)' : hass.states['person.gosia'].state === 'home' ? '#04a5e5' : ''} !important;
+              }
+
+  - type: custom:bubble-card
+    card_type: button
+    button_type: name
+    card_layout: large-2-rows
+    name: Śmieci
+    icon: mdi:delete-circle-outline
+    show_state: true
+    styles: |
+      .bubble-sub-button-1 {
+        animation: ${hass.states['sensor.normal_2'].state === 'Jutro' ? 'blink 1s ease infinite' : ''};
+        color: ${hass.states['sensor.normal_2'].state === 'Jutro' ? 'red' : ''} !important;
+      }
+      .bubble-sub-button-2 {
+        animation: ${hass.states['sensor.glass_2'].state === 'Jutro' ? 'blink 1s ease infinite' : ''};
+        color: ${hass.states['sensor.glass_2'].state === 'Jutro' ? 'red' : ''} !important;
+      }
+      .bubble-sub-button-3 {
+        animation: ${hass.states['sensor.paper_2'].state === 'Jutro' ? 'blink 1s ease infinite' : ''};
+        color: ${hass.states['sensor.paper_2'].state === 'Jutro' ? 'red' : ''} !important;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    sub_button:
+      - entity: sensor.normal_2
+        icon: mdi:food
+        show_background: false
+        show_state: true
+      - entity: sensor.glass_2
+        show_state: true
+        show_background: false
+        icon: mdi:glass-fragile
+      - entity: sensor.paper_2
+        show_background: false
+        show_state: true
+        icon: mdi:newspaper
+
+
+  - type: custom:bubble-card
+    card_type: button
+    button_type: state
+    entity: sensor.current_production
+    card_layout: large-2-rows
+    name: Energy
+    icon: mdi:solar-power-variant-outline
+    show_state: true
+    sub_button:
+      - entity: sensor.daily_production
+        icon: mdi:transmission-tower
+        show_background: false
+        show_state: true
+      - entity: sensor.daily_grid_outflow
+        show_state: true
+        show_background: false
+        icon: mdi:transmission-tower-export
+      - entity: sensor.daily_grid_inflow
+        show_background: false
+        show_state: true
+        icon: mdi:transmission-tower-import
+
+
+  - type: custom:bubble-card
+    card_type: button
+    button_type: state
+    entity: sensor.current_battery_charge
+    card_layout: large-2-rows
+    name: Battery
+    icon: mdi:car-battery
+    show_state: true
+    sub_button:
+      - entity: sensor.current_battery_charging
+        icon: mdi:battery-plus-variant
+        show_background: false
+        show_state: true
+      - entity: sensor.current_battery_discharging
+        show_state: true
+        show_background: false
+        icon: mdi:battery-minus-variant
+
+  - type: custom:bubble-card
+    card_type: button
+    button_type: state
+    entity: sensor.current_battery_charge
+    card_layout: large-2-rows
+    name: Water
+    icon: mdi:water
+    show_state: true
+    sub_button:
+      - entity: sensor.current_battery_charging
+        icon: mdi:battery-plus-variant
+        show_background: false
+        show_state: true
+      - entity: sensor.current_battery_discharging
+        show_state: true
+        show_background: false
+        icon: mdi:battery-minus-variant
+
+  - type: custom:bubble-card
+    card_type: button
+    button_type: state
+    entity: sensor.current_battery_charge
+    card_layout: large-2-rows
+    name: Gas
+    icon: mdi:fire
+    show_state: true
+    sub_button:
+      - entity: sensor.current_battery_charging
+        icon: mdi:battery-plus-variant
+        show_background: false
+        show_state: true
+      - entity: sensor.current_battery_discharging
+        show_state: true
+        show_background: false
+        icon: mdi:battery-minus-variant

@@ -1,0 +1,1160 @@
+---
+type: vertical-stack
+view_layout:
+  grid-area: "main"
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Salon"
+        button_type: name
+        name: Salon
+        icon: mdi:sofa
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Lights
+        icon: ""
+        sub_button:
+          - entity: sensor.salontemp_temperature
+            show_icon: true
+            show_state: true
+            show_name: false
+            show_background: false
+      - type: custom:rgb-light-card
+        entity: light.kanapa
+        justify: around
+        size: 23
+        colors:
+          - color_temp: 250
+            brightness: 255
+            icon_color: white
+          - color_temp: 370
+            brightness: 255
+          - color_temp: 454
+            brightness: 255
+        card_mod:
+          style: |
+            * {
+              margin-bottom: 6px !important;
+            }
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.kanapa
+            name: Salon
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkosalon
+            name: Ściana
+            icon: mdi:wall-sconce
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.wlacznikkuchnia_l1
+            name: Kuchnia
+            icon: mdi:countertop
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.wlacznikkuchnia_l2
+            name: Jadalnia
+            icon: mdi:table-furniture
+      - type: custom:bubble-card
+        card_type: separator
+        name: Media
+        icon: ""
+      - type: custom:bubble-card
+        card_type: media-player
+        entity: media_player.salon
+        card_layout: normal
+        hide:
+          power_button: true
+      - type: custom:decluttering-card
+        template: media
+        variables:
+          - entity1: automation.movies
+          - entity2: media_player.salon
+          - icon1: filmstrip-box
+          - icon2: power
+          - service: script.tv
+      - type: custom:bubble-card
+        card_type: separator
+        name: Shutters
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletataraslewa
+        name: Taras
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletatarasprawa
+        name: Wejście
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletajadalnia
+        name: Jadalnia
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletakuchnia
+        name: Kuchnia
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Jasmina"
+        button_type: name
+        name: Jaśmina
+        icon: mdi:flower-tulip-outline
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Lights
+        icon: ""
+        sub_button:
+          - entity: sensor.salontemp_temperature
+            show_icon: true
+            show_state: true
+            show_name: false
+            show_background: false
+      - type: custom:light-entity-card
+        entity: light.zarowkajasmina
+        shorten_cards: false
+        consolidate_entities: true
+        child_card: true
+        hide_header: false
+        header: All lights
+        color_wheel: true
+        persist_features: true
+        brightness: true
+        color_temp: true
+        white_value: false
+        color_picker: true
+        smooth_color_wheel: true
+        speed: false
+        intensity: false
+        force_features: false
+        show_slider_percent: false
+        full_width_sliders: true
+        brightness_icon: weather-sunny
+        white_icon: file-word-box
+        temperature_icon: thermometer
+        speed_icon: speedometer
+        intensity_icon: transit-connection-horizontal
+        effects_list: false
+        card_mod:
+          style: >
+            ha-card {
+              margin: 14px 8px !important;
+              background: none;
+            } ha-card > div.light-entity-card__header > div.light-entity-card__title
+            {
+              font-size: 14px !important;
+              font-weight: 500;
+            }
+      - type: custom:rgb-light-card
+        entity: light.zarowkajasmina
+        justify: around
+        size: 23
+        colors:
+          - color_temp: 153
+            brightness: 255
+            icon_color: white
+          - color_temp: 357
+            brightness: 255
+          - color_temp: 451
+            brightness: 255
+          - rgb_color:
+              - 255
+              - 170
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(255,170,0), rgb(255,225,165))
+          - rgb_color:
+              - 255
+              - 0
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, red, rgb(255,100,100))
+          - rgb_color:
+              - 244
+              - 38
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(244,38,255), rgb(255,138,255))
+          - rgb_color:
+              - 0
+              - 222
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(0,222,255), rgb(140,240,255))
+          - rgb_color:
+              - 0
+              - 0
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, blue, rgb(100,100,255))
+        card_mod:
+          style: |
+            * {
+              margin-bottom: 6px !important;
+            }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Shutters
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletajasmina
+        name: Roleta
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Remigiusz"
+        button_type: name
+        name: Remigiusz
+        icon: mdi:soccer
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Lights
+        icon: ""
+        sub_button:
+          - entity: sensor.salontemp_temperature
+            show_icon: true
+            show_state: true
+            show_name: false
+            show_background: false
+      - type: custom:light-entity-card
+        entity: light.zarowkaremik
+        shorten_cards: false
+        consolidate_entities: true
+        child_card: true
+        hide_header: false
+        header: All lights
+        color_wheel: true
+        persist_features: true
+        brightness: true
+        color_temp: true
+        white_value: false
+        color_picker: true
+        smooth_color_wheel: true
+        speed: false
+        intensity: false
+        force_features: false
+        show_slider_percent: false
+        full_width_sliders: true
+        brightness_icon: weather-sunny
+        white_icon: file-word-box
+        temperature_icon: thermometer
+        speed_icon: speedometer
+        intensity_icon: transit-connection-horizontal
+        effects_list: false
+        card_mod:
+          style: >
+            ha-card {
+              margin: 14px 8px !important;
+              background: none;
+            } ha-card > div.light-entity-card__header > div.light-entity-card__title
+            {
+              font-size: 14px !important;
+              font-weight: 500;
+            }
+      - type: custom:rgb-light-card
+        entity: light.zarowkaremik
+        justify: around
+        size: 23
+        colors:
+          - color_temp: 153
+            brightness: 255
+            icon_color: white
+          - color_temp: 357
+            brightness: 255
+          - color_temp: 451
+            brightness: 255
+          - rgb_color:
+              - 255
+              - 170
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(255,170,0), rgb(255,225,165))
+          - rgb_color:
+              - 255
+              - 0
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, red, rgb(255,100,100))
+          - rgb_color:
+              - 244
+              - 38
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(244,38,255), rgb(255,138,255))
+          - rgb_color:
+              - 0
+              - 222
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(0,222,255), rgb(140,240,255))
+          - rgb_color:
+              - 0
+              - 0
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, blue, rgb(100,100,255))
+        card_mod:
+          style: |
+            * {
+              margin-bottom: 6px !important;
+            }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Shutters
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletaremik
+        name: Roleta
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Sypialnia"
+        button_type: name
+        name: Sypialnia
+        icon: mdi:bed-double-outline
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Lights
+        icon: ""
+        sub_button:
+          - show_attribute: true
+            entity: climate.sypialnia
+            show_icon: true
+            attribute: current_temperature
+            show_state: false
+            show_last_changed: false
+            icon: mdi:thermometer
+            show_background: false
+      - type: custom:light-entity-card
+        entity: light.zarowkasypialnia
+        shorten_cards: false
+        consolidate_entities: true
+        child_card: true
+        hide_header: false
+        header: All lights
+        color_wheel: true
+        persist_features: true
+        brightness: true
+        color_temp: true
+        white_value: false
+        color_picker: true
+        smooth_color_wheel: true
+        speed: false
+        intensity: false
+        force_features: false
+        show_slider_percent: false
+        full_width_sliders: true
+        brightness_icon: weather-sunny
+        white_icon: file-word-box
+        temperature_icon: thermometer
+        speed_icon: speedometer
+        intensity_icon: transit-connection-horizontal
+        effects_list: false
+        card_mod:
+          style: >
+            ha-card {
+              margin: 14px 8px !important;
+              background: none;
+            } ha-card > div.light-entity-card__header > div.light-entity-card__title
+            {
+              font-size: 14px !important;
+              font-weight: 500;
+            }
+      - type: custom:rgb-light-card
+        entity: light.zarowkasypialnia
+        justify: around
+        size: 23
+        colors:
+          - color_temp: 153
+            brightness: 255
+            icon_color: white
+          - color_temp: 357
+            brightness: 255
+          - color_temp: 451
+            brightness: 255
+          - rgb_color:
+              - 255
+              - 170
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(255,170,0), rgb(255,225,165))
+          - rgb_color:
+              - 255
+              - 0
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, red, rgb(255,100,100))
+          - rgb_color:
+              - 244
+              - 38
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(244,38,255), rgb(255,138,255))
+          - rgb_color:
+              - 0
+              - 222
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(0,222,255), rgb(140,240,255))
+          - rgb_color:
+              - 0
+              - 0
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, blue, rgb(100,100,255))
+        card_mod:
+          style: |
+            * {
+              margin-bottom: 6px !important;
+            }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Shutters
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletasypialnia
+        name: Roleta
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Office"
+        button_type: name
+        name: Gabinet
+        icon: mdi:chair-rolling
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Lights
+        icon: ""
+        sub_button:
+          - entity: sensor.tempgabinet_temperature
+            show_icon: true
+            show_state: true
+            show_name: false
+            show_background: false
+      - type: custom:bubble-card
+        card_type: button
+        button_type: slider
+        entity: light.gabinet
+        name: Gabinet
+        icon: mdi:lightbulb-multiple
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.zarowkagabinet
+            name: Żarówka 1
+            icon: mdi:lightbulb-cfl
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.zarowkagabinet2_1
+            name: Żarówka 2
+            icon: mdi:lightbulb-cfl
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.zarowkagabinet2_2
+            name: Żarówka 3
+            icon: mdi:lightbulb-cfl
+      - type: custom:rgb-light-card
+        entity: light.gabinet
+        justify: around
+        size: 23
+        colors:
+          - color_temp: 153
+            brightness: 255
+            icon_color: white
+          - color_temp: 357
+            brightness: 255
+          - color_temp: 451
+            brightness: 255
+          - rgb_color:
+              - 255
+              - 170
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(255,170,0), rgb(255,225,165))
+          - rgb_color:
+              - 255
+              - 0
+              - 0
+            brightness: 255
+            icon_color: linear-gradient(15deg, red, rgb(255,100,100))
+          - rgb_color:
+              - 244
+              - 38
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(244,38,255), rgb(255,138,255))
+          - rgb_color:
+              - 0
+              - 222
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, rgb(0,222,255), rgb(140,240,255))
+          - rgb_color:
+              - 0
+              - 0
+              - 255
+            brightness: 255
+            icon_color: linear-gradient(15deg, blue, rgb(100,100,255))
+        card_mod:
+          style: |
+            * {
+              margin-bottom: 6px !important;
+            }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Power
+        icon: ""
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkobiurkogosia
+            name: Gosia
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkobiurkokrzys
+            name: Krzyś
+      - type: custom:bubble-card
+        card_type: separator
+        name: Shutters
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletagabinet
+        name: Roleta
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: separator
+        name: Overview
+        icon: ""
+      - type: custom:bubble-card
+        card_type: button
+        button_type: name
+        card_layout: large-2-rows
+        name: Office
+        icon: mdi:home-lightning-bolt-outline
+        show_state: true
+        sub_button:
+          - entity: sensor.gniazdkobiurkogosia_energy
+            icon: mdi:counter
+            show_background: false
+            show_state: true
+            tap_action:
+              action: more-info
+          - entity: sensor.gniazdkobiurkogosia_power
+            show_state: true
+            show_background: false
+          - entity: sensor.gniazdkobiurkokrzys_energy
+            show_background: false
+            show_state: true
+            icon: mdi:counter
+            tap_action:
+              action: more-info
+          - entity: sensor.gniazdkobiurkokrzys_power
+            show_state: true
+            show_background: false
+      - type: custom:bubble-card
+        card_type: button
+        button_type: name
+        card_layout: large-2-rows
+        name: HomeLab
+        icon: mdi:generator-stationary
+        show_state: true
+        sub_button:
+          - entity: sensor.gniazdkoha_energy
+            icon: mdi:counter
+            show_background: false
+            show_state: true
+            tap_action:
+              action: more-info
+          - entity: sensor.gniazdkoha_power
+            show_state: true
+            show_background: false
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Shutters"
+        button_type: name
+        name: Parter
+        icon: mdi:window-shutter
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.parter
+        name: Parter
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.pietro
+        name: Piętro
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: separator
+        name: Parter
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletakuchnia
+        name: Kuchnia
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletajadalnia
+        name: Jadalnia
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletatarasprawa
+        name: Taras Wejście
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletataraslewa
+        name: Taras
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: separator
+        name: Piętro
+        icon: ""
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletasypialnia
+        name: Sypialnia
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletagabinet
+        name: Gabinet
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletaremik
+        name: Remigiusz
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.roletajasmina
+        name: Jaśmina
+        show_icon: true
+        show_name: true
+        show_state: false
+        show_attribute: false
+        show_last_changed: false
+        card_layout: large
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#utilities"
+        button_type: name
+        name: Utilities
+        icon: mdi:home-floor-g
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Power
+        icon: ""
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkopompa
+            name: Pompa
+            icon: mdi:pump
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkopodlogowka
+            name: Podłogówka
+            icon: mdi:heating-coil
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: switch.gniazdkortv
+            name: RTV
+            icon: mdi:television
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: switch.gniazdkogrowbox
+            name: Modem
+            icon: mdi:web
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: switch.gniazdkoha
+            name: HomeLab
+            icon: mdi:server
+      - type: custom:bubble-card
+        card_type: separator
+        name: Sensors
+        icon: ""
+      - type: horizontal-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: state
+            entity: binary_sensor.czujkataras_contact
+            name: Taras
+            icon: mdi:door-sliding
+          - type: custom:bubble-card
+            button_type: state
+            card_type: button
+            entity: binary_sensor.czujnikdrzwi_contact
+            name: Drzwi
+            icon: mdi:door
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Aircon"
+        button_type: name
+        name: Air Condition
+        icon: mdi:air-conditioner
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Gabinet
+        icon: ''
+        sub_button:
+          - show_attribute: true
+            entity: climate.gabinet
+            show_icon: true
+            attribute: current_temperature
+            show_state: false
+            show_last_changed: false
+            icon: mdi:thermometer
+            show_background: false
+      - type: custom:bubble-card
+        card_type: button
+        button_type: state
+        entity: climate.gabinet
+        show_name: false
+        icon: mdi:chair-rolling
+        styles: |
+          .bubble-icon-container {
+            background: ${hass.states['climate.gabinet'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-1 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.gabinet'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-2 {
+            opacity: 1 !important;
+            background-color: ${hass.states['climate.gabinet'].state === 'off' ? '' : 'var(--ha-card-background)'} !important;
+          }
+          .bubble-sub-button-2 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.gabinet'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-3 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.gabinet'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+        sub_button:
+          - entity: script.gabinet
+            icon: mdi:approximately-equal
+            tap_action:
+              action: toggle
+          - entity: climate.gabinet
+            icon: mdi:weather-windy
+            tap_action:
+              action: call-service
+              service: climate.set_preset_mode
+              target:
+                entity_id: climate.gabinet
+              data:
+                preset_mode: windFree
+          - entity: script.gabineton
+            icon: mdi:power
+            tap_action:
+              action: toggle
+        card_layout: normal
+      - type: custom:bubble-card
+        card_type: separator
+        name: Sypialnia
+        icon: ''
+        sub_button:
+          - show_attribute: true
+            entity: climate.sypialnia
+            show_icon: true
+            attribute: current_temperature
+            show_state: false
+            show_last_changed: false
+            icon: mdi:thermometer
+            show_background: false
+      - type: custom:bubble-card
+        card_type: button
+        button_type: state
+        entity: climate.sypialnia
+        show_name: false
+        icon: mdi:bed-double-outline
+        styles: |
+          .bubble-icon-container {
+            background: ${hass.states['climate.sypialnia'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-1 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.sypialnia'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-2 {
+            opacity: 1 !important;
+            background-color: ${hass.states['climate.sypialnia'].state === 'off' ? '' : 'var(--ha-card-background)'} !important;
+          }
+          .bubble-sub-button-2 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.sypialnia'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-3 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.sypialnia'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+        sub_button:
+          - entity: script.sypialnia
+            icon: mdi:approximately-equal
+            tap_action:
+              action: toggle
+          - entity: climate.sypialnia
+            icon: mdi:weather-windy
+            tap_action:
+              action: call-service
+              service: climate.set_preset_mode
+              target:
+                entity_id: climate.sypialnia
+              data:
+                preset_mode: windFree
+          - entity: script.sypialniaon
+            icon: mdi:power
+            tap_action:
+              action: toggle
+        card_layout: normal
+      - type: custom:bubble-card
+        card_type: separator
+        name: Salon
+        icon: ''
+        sub_button:
+          - show_attribute: true
+            entity: climate.salon
+            show_icon: true
+            attribute: current_temperature
+            show_state: false
+            show_last_changed: false
+            icon: mdi:thermometer
+            show_background: false
+      - type: custom:bubble-card
+        card_type: button
+        button_type: state
+        entity: climate.salon
+        show_name: false
+        icon: mdi:sofa-outline
+        styles: |
+          .bubble-icon-container {
+            background: ${hass.states['climate.salon'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-1 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.salon'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-2 {
+            opacity: 1 !important;
+            background-color: ${hass.states['climate.salon'].state === 'off' ? '' : 'var(--ha-card-background)'} !important;
+          }
+          .bubble-sub-button-2 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.salon'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+          .bubble-sub-button-3 > ha-icon {
+            opacity: 1 !important;
+            color: ${hass.states['climate.salon'].state === 'off' ? '' : 'var(--accent-color)'} !important;
+          }
+        sub_button:
+          - entity: script.salon
+            icon: mdi:approximately-equal
+            tap_action:
+              action: toggle
+          - entity: climate.salon
+            icon: mdi:weather-windy
+            tap_action:
+              action: call-service
+              service: climate.set_preset_mode
+              target:
+                entity_id: climate.salon
+              data:
+                preset_mode: windFree
+          - entity: script.salonon
+            icon: mdi:power
+            tap_action:
+              action: toggle
+        card_layout: normal
+
+
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#Camera"
+        button_type: name
+        name: Security
+        icon: mdi:cctv
+        scrolling_effect: true
+        card_layout: normal
+        hide_backdrop: false
+      - type: custom:bubble-card
+        card_type: separator
+        name: Entrance
+        icon: ""
+      - type: custom:frigate-card
+        cameras:
+          - camera_entity: camera.entrance
+            title: Przejście
+        view:
+          update_force: true
+        menu:
+          buttons:
+            frigate:
+              enabled: false
+          style: none
+        card_mod:
+          style: |
+            ha-card {
+              margin: 0px 20px;
+              overflow: hidden !important;
+              border-radius: 16px !important;
+            }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Last Presences
+        icon: ""
+      - type: horizontal-stack
+        cards:
+          - camera_view: auto
+            type: picture-glance
+            title: Person
+            entities: []
+            image_entity: image.entrance_person
+            card_mod:
+              style: |
+                ha-card { 
+                  margin: 0px 0 0 20px;
+                  border-radius: 10px !important;
+                }
+                ha-card > div.box {
+                  display: none;
+                }
+          - camera_view: auto
+            type: picture-glance
+            title: Dog
+            entities: []
+            image_entity: image.entrance_dog
+            card_mod:
+              style: |
+                ha-card { 
+                  margin: 0px 10px;
+                  border-radius: 10px !important;
+                }
+                ha-card > div.box {
+                  display: none;
+                }
+          - type: picture-glance
+            aspect_ratio: 100%
+            image_entity: image.entrance_cat
+            camera_view: auto
+            entities: []
+            card_mod:
+              style: |
+                ha-card { 
+                  margin: 0px 20px 0 0;
+                  border-radius: 10px !important;
+                }
+                ha-card > div.box {
+                  display: none;
+                }
+      - type: custom:bubble-card
+        card_type: separator
+        name: Last Clips
+        icon: ""
+      - type: custom:stack-in-card
+        cards:
+          - type: custom:frigate-card
+            cameras:
+              - camera_entity: camera.entrance
+            view:
+              default: clips
+            menu:
+              style: none
+              buttons:
+                frigate:
+                  enabled: false
+                cameras:
+                  enabled: false
+                frigate_ui:
+                  enabled: false
+            live:
+              draggable: true
+            event_gallery:
+              controls:
+                thumbnails:
+                  size: 10
+                  show_details: false
+                  show_favorite_control: false
+                  show_timeline_control: false
+            dimensions:
+              aspect_ratio: '16:8'
+        card_mod:
+          style: |
+            ha-card { 
+              margin: 14px 20px 0 20px !important;
+              background: none;
+              box-shadow: none;
+            }
+            .type-custom-stack-in-card {
+              overflow: visible !important;
+            }

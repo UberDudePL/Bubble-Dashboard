@@ -1,0 +1,293 @@
+---
+type: custom:layout-card
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr 1fr"
+  grid-template-areas: >
+    "room1 room2 room3 room4"
+    "room5 room6 room7 room8"
+    "room9 room10 room11 room12"
+    "room13 room13 room13 room13"
+  mediaquery:
+    # Mobile
+    "(max-width: 600px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "room1 room2"
+        "room3 room4"
+        "room5 room6"
+        "room7 room8"
+        "room9 room10"
+        "room11 room12"
+        "room13 room13"
+    # Tablet
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr 1fr"
+      grid-template-areas: |
+        "room1 room2 room3"
+        "room4 room5 room6"
+        "room7 room8 room9"
+        "room10 room11 room12"
+        "room13 room13 room13"
+view_layout:
+  grid-area: "rooms"
+cards:
+  - type: custom:bubble-card
+    card_type: button
+    entity: switch.wlacznikwiatrolap_l3
+    name: Wiatrołap
+    icon: mdi:door
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    tap_action:
+      action: toggle
+    view layout:
+      grid_area: "room1"
+    sub_button:
+      - show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#utilities"
+        icon: mdi:chevron-right
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: switch.wlacznikkuchnia_l1
+    name: Kuchnia
+    icon: mdi:countertop
+    tap_action:
+      action: toggle
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    view layout:
+      grid_area: "room2"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: switch.wlacznikkuchnia_l2
+    name: Jadalnie
+    icon: mdi:table-furniture
+    tap_action:
+      action: toggle
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    view layout:
+      grid_area: "room3"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.kanapa
+    name: Salon
+    tap_action:
+      action: toggle
+    icon: mdi:sofa-outline
+    sub_button:
+      - entity: light.kanapa
+        show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#Salon"
+        icon: mdi:chevron-right
+    show_attribute: false
+    show_state: false
+    show_name: true
+    force_icon: false
+    scrolling_effect: true
+    show_icon: true
+    button_type: slider
+    view layout:
+      grid_area: "room4"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: switch.wlacznikschody
+    name: Schody
+    icon: mdi:stairs
+    tap_action:
+      action: toggle
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    view layout:
+      grid_area: "room5"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.korytarz
+    name: Korytarz
+    icon: mdi:swap-vertical-bold
+    tap_action:
+      action: toggle
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    view_layout:
+      grid_area: "room6"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.zarowkajasmina
+    name: Jaśmina
+    tap_action:
+      action: toggle
+    icon: mdi:flower-tulip-outline
+    sub_button:
+      - entity: light.zarowkajasmina
+        show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#Jasmina"
+        icon: mdi:chevron-right
+    show_attribute: false
+    show_state: false
+    show_name: true
+    force_icon: false
+    scrolling_effect: true
+    show_icon: true
+    button_type: slider
+    view layout:
+      grid_area: "room7"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.zarowkaremik
+    name: Remigiusz
+    tap_action:
+      action: toggle
+    icon: mdi:soccer
+    sub_button:
+      - entity: light.zarowkaremik
+        show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#Remigiusz"
+        icon: mdi:chevron-right
+    show_attribute: false
+    show_state: false
+    show_name: true
+    force_icon: false
+    scrolling_effect: true
+    show_icon: true
+    button_type: slider
+    view layout:
+      grid_area: "room8"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.gabinet
+    tap_action:
+      action: toggle
+    name: Gabinet
+    icon: mdi:chair-rolling
+    sub_button:
+      - entity: light.gabinet
+        show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#Office"
+        icon: mdi:chevron-right
+    show_attribute: false
+    show_state: false
+    show_name: true
+    force_icon: false
+    scrolling_effect: true
+    show_icon: true
+    button_type: slider
+    view layout:
+      grid_area: "room9"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: light.zarowkasypialnia
+    tap_action:
+      action: toggle
+    name: Sypialnia
+    icon: mdi:bed-double-outline
+    sub_button:
+      - entity: light.zarowkasypialnia
+        show_name: false
+        show_state: false
+        show_last_changed: false
+        show_attribute: false
+        show_background: true
+        show_icon: true
+        tap_action:
+          action: navigate
+          navigation_path: "#Sypialnia"
+        icon: mdi:chevron-right
+    show_attribute: false
+    show_state: false
+    show_name: true
+    force_icon: false
+    scrolling_effect: true
+    show_icon: true
+    button_type: slider
+    view layout:
+      grid_area: "room10"
+
+  - type: custom:bubble-card
+    card_type: button
+    tap_action:
+      action: toggle
+    entity: switch.wlacznikwiatrolap_l1
+    name: Wejście
+    icon: mdi:home-roof
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
+    view_layout:
+      grid_area: "room11"
+
+  - type: custom:bubble-card
+    card_type: button
+    entity: switch.wlacznikogrod
+    tap_action:
+      action: toggle
+    name: Taras
+    icon: mdi:grill-outline
+    force_icon: false
+    show_name: true
+    show_state: false
+    show_last_changed: false
+    show_attribute: false
